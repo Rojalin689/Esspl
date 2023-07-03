@@ -1,0 +1,6 @@
+SELECT Orders.IDOrder AS [Order],Orders_Companies.CompanyEmail1, Orders_OrderStatus.OrderStatusName AS [Status],Orders.OrderEditDateTime
+FROM Orders WITH(NOLOCK)
+LEFT JOIN OrderStatuses [Orders_OrderStatus] WITH(NOLOCK) ON Orders.OrderStatusID = Orders_OrderStatus.IDOrderStatus
+LEFT JOIN Companies [Orders_Companies] WITH(NOLOCK) ON Orders.CompanyIDConsignee = Orders_Companies.IDCompany
+where Orders_Companies.CompanyEmail1 is not null
+and Orders_OrderStatus.IDOrderStatus=95
